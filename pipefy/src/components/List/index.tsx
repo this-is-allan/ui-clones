@@ -4,7 +4,9 @@ import Card from '../Card';
 
 import { Container } from './styles';
 
-const List = ({ data, index: listIndex }: any) => {
+import { CardProps, ListProps } from '../../utils/types';
+
+const List = ({ data, index: listIndex }: ListProps) => {
   return (
     <Container done={data.done}>
       <header>
@@ -18,7 +20,7 @@ const List = ({ data, index: listIndex }: any) => {
       </header>
       
       <ul>
-        {data.cards.map((card: any, index: number) => (
+        {data.cards.map((card: CardProps, index: number) => (
           <Card
             key={card.id}
             listIndex={listIndex}

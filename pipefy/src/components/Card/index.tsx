@@ -5,13 +5,18 @@ import BoardContext from "../Board/context";
 
 import { Container, Label } from "./styles";
 
-const Card = ({ data, index, listIndex }: any) => {
-  const ref = useRef<any>();
+interface CardProps {
+  index: number
+  listIndex: number
+  data: any
+}
+
+const Card = ({ data, index, listIndex }: CardProps) => {
+  const ref = useRef<HTMLDivElement>();
   const { move } = useContext(BoardContext);
   
   const [{ isDragging }, dragRef] = useDrag({
     type: "CARD",
-    // item: { index, id: data.id, content: data.content, listIndex },
     item: { index, listIndex },
     collect: (monitor) => ({
       isDragging: monitor.isDragging()
@@ -21,7 +26,6 @@ const Card = ({ data, index, listIndex }: any) => {
   const [, dropRef] = useDrop({
     accept: "CARD",
     hover(item, monitor) {
-      console.log('item.listIndex: ', item.listIndex)
       const draggedListIndex = item.listIndex;
       const targetListIndex = listIndex
 

@@ -1,3 +1,5 @@
 import { createContext } from "react";
 
-export default createContext({})
+import { BoardContext } from "../../utils/types";
+
+export default createContext({} as BoardContext)

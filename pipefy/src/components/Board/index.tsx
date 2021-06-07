@@ -9,12 +9,13 @@ import { Container } from "./styles";
 
 import BoardContext from "./context";
 
+
 const data = loadLists();
 
 const Board = () => {
   const [lists, setLists] = useState(data);
 
-  const move = (fromList, toList, from, to) => {
+  const move = (fromList: number, toList: string | number, from: number, to: number) => {
     setLists(produce(lists, draft => {
       const dragged = draft[fromList].cards[from];
 
